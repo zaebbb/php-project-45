@@ -1,0 +1,46 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../src/Engine.php';
+
+use function cli\line;
+use function cli\prompt;
+
+line("What is the result of the expression?");
+
+function gameCalc($name)
+{
+  $operation = rand(0, 30);
+  $numb_1 = rand(1, 100);
+  $numb_2 = rand(1, 100);
+
+  $result = 0;
+  $data = 0;
+
+  if ($operation < 10) {
+    $result = $numb_1 + $numb_2;
+    line("Question: {$numb_1} + {$numb_2}");
+  } else if ($operation > 20) {
+    $result = $numb_1 - $numb_2;
+    line("Question: {$numb_1} - {$numb_2}");
+  } else {
+    $result = $numb_1 * $numb_2;
+    line("Question: {$numb_1} * {$numb_2}");
+  }
+
+  $data = prompt('Your answer: ');
+
+  if ($result === (int) $data) {
+    line('Correct!');
+  } else {
+    line("'{$data}' is wrong answer ;(. Correct answer was '{$result}'.");
+    line("Let's try again, {$name}!");
+    die;
+  }
+}
+
+gameCalc($name);
+gameCalc($name);
+gameCalc($name);
+
+line("Congratulations, {$name}!");
