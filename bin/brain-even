@@ -13,8 +13,15 @@ line("Hello, %s!", $name);
 
 line('Answer "yes" if the number is even, otherwise answer "no".');
 
-function getQuiz(string $numb, string $correct, $name) {
+function getQuiz($name) {
+  $numb = rand(1, 100);
   $quiz = prompt("Question: {$numb}");
+
+  $correct = 'yes';
+
+  if ($numb % 2 !== 0) {
+    $correct = 'no';
+  }
 
   if ($quiz !== $correct) {
     line("'{$quiz}' is wrong answer ;(. Correct answer was '{$correct}'.");
@@ -26,9 +33,9 @@ function getQuiz(string $numb, string $correct, $name) {
   }
 }
 
-getQuiz('15', 'yes', $name);
-getQuiz('6', 'no', $name);
-getQuiz('7', 'yes', $name);
+getQuiz($name);
+getQuiz($name);
+getQuiz($name);
 
 line("Congratulations, {$name}!");
 
