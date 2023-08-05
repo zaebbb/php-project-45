@@ -28,7 +28,7 @@ function gameCalc($name)
     line("Question: {$numb_1} * {$numb_2}");
   }
 
-  $data = prompt('Your answer: ');
+  $data = prompt('Your answer');
 
   if ($result === (int) $data) {
     line('Correct!');

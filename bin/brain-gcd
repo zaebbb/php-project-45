@@ -1,0 +1,45 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../src/Engine.php';
+
+use function cli\line;
+use function cli\prompt;
+
+line("Find the greatest common divisor of given numbers.");
+
+function gameCalc($name)
+{
+  $numb_1 = rand(5, 100);
+  $numb_2 = rand(5, 100);
+
+  $max = max($numb_1, $numb_2);
+
+  $gcd = 1;
+
+  for ($i = 1; $i <= $max; $i++) {
+    if (
+      $numb_1 % $i === 0 &&
+      $numb_2 % $i === 0
+    ) {
+      $gcd = $i;
+    }
+  }
+
+  line("Question: {$numb_1} {$numb_2}");
+  $data = prompt('Your answer');
+
+  if ($gcd === (int) $data) {
+    line('Correct!');
+  } else {
+    line("'{$data}' is wrong answer ;(. Correct answer was '{$gcd}'.");
+    line("Let's try again, {$name}!");
+    die;
+  }
+}
+
+gameCalc($name);
+gameCalc($name);
+gameCalc($name);
+
+line("Congratulations, {$name}!");
