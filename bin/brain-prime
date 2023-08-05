@@ -1,0 +1,41 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../src/Engine.php';
+
+use function cli\line;
+use function cli\prompt;
+
+line('Answer "yes" if given number is prime. Otherwise answer "no".');
+
+function gameCalc($name)
+{
+  $numb = rand(3, 500);
+
+  $line = "Question: {$numb}";
+
+  $isPrime = 'yes';
+
+  for ($i = 2; $i < $numb; $i++) {
+    if ($numb % $i === 0) {
+      $isPrime = 'no';
+    }
+  }
+
+  line($line);
+  $data = prompt('Your answer');
+
+  if ($isPrime === $data) {
+    line('Correct!');
+  } else {
+    line("'{$data}' is wrong answer ;(. Correct answer was '{$isPrime}'.");
+    line("Let's try again, {$name}!");
+    die;
+  }
+}
+
+gameCalc($name);
+gameCalc($name);
+gameCalc($name);
+
+line("Congratulations, {$name}!");

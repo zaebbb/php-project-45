@@ -18,3 +18,7 @@
 ### Арифметическая прогрессия
 
 [![asciicast](https://asciinema.org/a/JNC4WlOwo805OlVrTI0uBIRq8.svg)](https://asciinema.org/a/JNC4WlOwo805OlVrTI0uBIRq8)
+
+### Является ли число простым
+
+[![asciicast](https://asciinema.org/a/D2gzsHS08iEA05V35QH0JPTLD.svg)](https://asciinema.org/a/D2gzsHS08iEA05V35QH0JPTLD)
