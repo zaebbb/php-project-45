@@ -1,0 +1,48 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../src/Engine.php';
+
+use function cli\line;
+use function cli\prompt;
+
+line("What number is missing in the progression?");
+
+function gameCalc($name)
+{
+  $start = rand(5, 100);
+  $max = rand(5, 10);
+  $point = rand(1, 10);
+  $resultPoint = rand(5, $max);
+  $result = 0;
+
+  $line = 'Question: ';
+
+  for ($i = 0; $i <= $max; $i++) {
+    $start += $point;
+
+    if ($i === $resultPoint) {
+      $result = $start;
+      $line .= ".. ";
+    } else {
+      $line .= "{$start} ";
+    }
+  }
+
+  line($line);
+  $data = prompt('Your answer');
+
+  if ($result === (int) $data) {
+    line('Correct!');
+  } else {
+    line("'{$data}' is wrong answer ;(. Correct answer was '{$result}'.");
+    line("Let's try again, {$name}!");
+    die;
+  }
+}
+
+gameCalc($name);
+gameCalc($name);
+gameCalc($name);
+
+line("Congratulations, {$name}!");
